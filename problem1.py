@@ -1,4 +1,4 @@
-def check(arr,dic):
+def max_numbers(arr,dic):
     max_key=0
     max_count=0
     for key in dic:
