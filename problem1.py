@@ -1,10 +1,10 @@
 def max_numbers(arr,dic):
     max_key=0
     max_count=0
-    for key in dic:
+    for key,values in dic.items():
         
         count=0
-        for val in dic[key]:
+        for val in values:
             if val in arr:
                 count+=1
         if count>max_count:
@@ -23,7 +23,7 @@ lookup={
     98:[88,76,77,55,32]
     
 }
-print("Test case1:",check(arr,lookup))
+print("Test case1:",max_numbers(arr,lookup))
 
 arr2=[5,3,8,54,88,16,33]   
 lookup2={
@@ -33,7 +33,7 @@ lookup2={
     1:[5,3,8,54,88,16,33],
     50:[12,3,53,16]  
 }
-print("Test case2:",check(arr2,lookup2))
+print("Test case2:",max_numbers(arr2,lookup2))
 
 arr3=[20,39,40,0]
 lookup3={
@@ -41,14 +41,14 @@ lookup3={
     2:[12,15,30,34],
     15:[34,53,66,33]
 }
-print("Test case3:",check(arr3,lookup3))
+print("Test case3:",max_numbers(arr3,lookup3))
 arr4=[0,0,0,0]
 lookup4={
     1:[0,10,0],
     15:[12,3,0,0,0],
     100:[15]
 }
-print("Test case 4:",check(arr4,lookup4))
+print("Test case 4:",max_numbers(arr4,lookup4))
 
 arr5=[100,14,53,64,34]
 lookup5={
@@ -56,4 +56,4 @@ lookup5={
     29:[15,15],
     700:[]
 }
-print("Test case 5:",check(arr5,lookup5))
+print("Test case 5:",max_numbers(arr5,lookup5))
