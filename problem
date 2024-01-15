@@ -1,0 +1,43 @@
+import ast 
+import numpy as np
+
+def read_data_from_file(file_path):
+    with open(file_path, 'r') as file:
+        content = file.read()
+
+    try:
+
+        list_start_index=content.index('[')
+        dict_start_index = content.index('{')
+        
+        arr_size=ast.literal_eval(content[:list_start_index].strip())
+        list_data = ast.literal_eval(content[list_start_index:dict_start_index].strip())
+        dict_data = ast.literal_eval(content[dict_start_index:].strip())
+        
+        
+        
+        result=[arr_size,list_data,dict_data]
+        return result
+    
+    except (SyntaxError, ValueError) as e:
+        print(f"Error parsing data from file: {e}")
+        return None
+
+
+def max_numbers(size_arr,arr,dic):
+    
+    max_count=0
+    count={}
+    set_list=set(arr)
+    for key,values in dic.items():
+        
+            count[key]=len(set_list&set(values))
+            
+    result=[key for key,value in count.items() if value==max(count.values())]
+    return result
+    
+file_path='large_testcase1.txt'
+result=read_data_from_file(file_path)
+answer=max_numbers(result[0],result[1],result[2])
+
+print(answer)
